@@ -46,36 +46,46 @@ export default function Login() {
     <>
       <h1>login page</h1>
 
-      <form>
-        <div>
-          <label>
-            email :
-            <br />
-            <input type="text" name="email" onChange={handleChange} />
-          </label>
-        </div>
+      <div>
+        <form>
+          <div>
+            <label>
+              email :
+              <br />
+              <input type="text" name="email" onChange={handleChange} />
+            </label>
+          </div>
 
-        <div>
-          <label>
-            password :
-            <br />
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              disabled={!emailValidation}
-            />
-          </label>
-        </div>
+          <div>
+            <label>
+              password :
+              <br />
+              <input
+                type="password"
+                name="password"
+                onChange={handleChange}
+                disabled={!emailValidation}
+              />
+            </label>
+          </div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
 
-        <button onClick={handleSubmit} disabled={!emailValidation}>
-          제출하기
-        </button>
-      </form>
+          <button onClick={handleSubmit} disabled={!emailValidation}>
+            제출하기
+          </button>
+        </form>
+        <button onClick={() => navigate("/signup")}>회원가입 하러 가기</button>
+      </div>
 
-      <button onClick={() => navigate("/signup")}>회원가입 하러 가기</button>
+      <img
+        src="../kakao_login_large_wide.png"
+        alt="Kakao Login"
+        onClick={() =>
+          (window.location.href =
+            "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=29a089c74cde92fa81e35560d1f6f555&redirect_uri=http://localhost:5173/auth/kakao")
+        }
+      />
     </>
   );
 }
