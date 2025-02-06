@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -31,10 +32,11 @@ export default function Signup() {
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setError("");
 
     axios
-      .get(`http://localhost:8080/api/auth/validate?email=${formdata.email}`)
+      .get(
+        import.meta.env.VITE_BASE_UTL + `/auth/validate?email=${formdata.email}`
+      )
       .then(({ data }) => {
         if (data.exist) {
           setError("존재하는 이메일입니다.");
@@ -48,7 +50,7 @@ export default function Signup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/auth/signup", formdata)
+      .post(import.meta.env.VITE_BASE_UTL + "/auth/signup", formdata)
       .then(() => navigate("/login"))
       .catch((error) => {
         console.log(error);
@@ -58,34 +60,57 @@ export default function Signup() {
 
   return (
     <>
-      <h1>signup page</h1>
-      <form>
-        <div>
-          <label>
-            email :
-            <br />
-            <input type="text" name="email" onChange={handleChange} />
-          </label>
-          <button onClick={handleClick} disabled={!validateButton}>
+      <Header title="회원가입" />
+      <form className="space-y-4">
+        <label className="label">
+          이메일
+          <input
+            className="input"
+            type="text"
+            name="email"
+            onChange={handleChange}
+            placeholder="이메일을 입력하세요"
+          />
+          <button
+            className="ml-2 mt-2 text-sm text-gray-600 hover:underline"
+            onClick={handleClick}
+            disabled={!validateButton}
+          >
             확인하기
           </button>
-        </div>
+        </label>
+        <br />
+        <br />
 
-        <div>
-          <label>
-            password :
-            <br />
-            <input
-              type="password"
-              name="password"
-              onChange={handleChange}
-              disabled={!emailValidation}
-            />
-          </label>
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        <label className="label">
+          비밀번호
+          <input
+            className="input"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            disabled={!emailValidation}
+          />
+        </label>
 
-        <button onClick={handleSubmit} disabled={!emailValidation}>
+        <label className="label">
+          비밀번호 확인
+          <input
+            className="input"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            disabled={!emailValidation}
+          />
+        </label>
+
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+
+        <button
+          className="wideButton"
+          onClick={handleSubmit}
+          disabled={!emailValidation}
+        >
           제출하기
         </button>
       </form>
