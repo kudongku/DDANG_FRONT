@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import HrOrHr from "../components/HrOrHr";
+import KakaoLoginImg from "../components/KakaoLoginImg";
+import Header from "../components/Header";
 
 export default function Login() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
@@ -45,48 +48,50 @@ export default function Login() {
 
   return (
     <>
-      <h1>login page</h1>
+      <Header title={"로그인"} />
+      <form className="space-y-4">
+        <label className="label">
+          이메일
+          <input
+            className="input"
+            type="text"
+            name="email"
+            onChange={handleChange}
+            placeholder="이메일을 입력하세요"
+          />
+        </label>
 
-      <div>
-        <form>
-          <div>
-            <label>
-              email :
-              <br />
-              <input type="text" name="email" onChange={handleChange} />
-            </label>
-          </div>
+        <label className="label">
+          비밀번호
+          <input
+            className="input"
+            type="password"
+            name="password"
+            onChange={handleChange}
+            placeholder="비밀번호를 입력하세요"
+            disabled={!emailValidation}
+          />
+        </label>
 
-          <div>
-            <label>
-              password :
-              <br />
-              <input
-                type="password"
-                name="password"
-                onChange={handleChange}
-                disabled={!emailValidation}
-              />
-            </label>
-          </div>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+        <button
+          onClick={handleSubmit}
+          disabled={!emailValidation}
+          className="wideButton"
+        >
+          이메일로 로그인
+        </button>
+      </form>
 
-          <button onClick={handleSubmit} disabled={!emailValidation}>
-            제출하기
-          </button>
-        </form>
-        <button onClick={() => navigate("/signup")}>회원가입 하러 가기</button>
-      </div>
-
-      <img
-        src="../kakao_login_large_wide.png"
-        alt="Kakao Login"
-        onClick={() =>
-          (window.location.href =
-            "https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=29a089c74cde92fa81e35560d1f6f555&redirect_uri=http://localhost:5173/auth/kakao")
-        }
-      />
+      <Link
+        to="/signup"
+        className="inline-flex justify-between items-center mt-4 text-sm text-gray-600 hover:underline"
+      >
+        회원가입 하러 가기
+      </Link>
+      <HrOrHr />
+      <KakaoLoginImg />
     </>
   );
 }
