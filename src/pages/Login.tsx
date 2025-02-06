@@ -3,8 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
-
   const [error, setError] = useState("");
   const [emailValidation, setEmailValidation] = useState(false);
   const [formdata, setFormdata] = useState({
@@ -31,9 +31,10 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/auth/login", formdata)
+      .post(baseUrl + "/auth/login", formdata)
       .then(({ data }) => {
         localStorage.setItem("accessToken", data.tokenType + data.token);
+        localStorage.setItem("refreshToken", data.refreshToken);
         navigate("/");
       })
       .catch((error) => {
