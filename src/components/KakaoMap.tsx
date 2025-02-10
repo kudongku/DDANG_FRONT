@@ -1,7 +1,17 @@
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useEffect, useRef, useState } from "react";
 
-export default function KakaoMap() {
+interface KakaoMapProps {
+  setLocation: React.Dispatch<
+    React.SetStateAction<{
+      address: string;
+      x: number;
+      y: number;
+    }>
+  >;
+}
+
+export default function KakaoMap({ setLocation }: KakaoMapProps) {
   const mapRef = useRef<kakao.maps.Map>(null);
   const [mapType, setMapType] = useState<"roadmap" | "skyview">("roadmap");
   const [position, setPosition] = useState({
@@ -12,7 +22,6 @@ export default function KakaoMap() {
     lat: 33.450701,
     lng: 126.570667,
   });
-  const [address, setAddress] = useState<string>("");
 
   const adjustZoom = (delta: number) => {
     const map = mapRef.current;
@@ -32,7 +41,11 @@ export default function KakaoMap() {
       if (status === kakao.maps.services.Status.OK) {
         for (let i = 0; i < result.length; i++) {
           if (result[i].region_type === "H") {
-            setAddress(result[i].address_name);
+            setLocation({
+              address: result[i].address_name,
+              x: result[i].x,
+              y: result[i].y,
+            });
             break;
           }
         }
@@ -113,12 +126,6 @@ export default function KakaoMap() {
       <p className="text-center text-gray-600 mt-4 font-semibold">
         지도를 클릭해주세요!
       </p>
-
-      {address && (
-        <div className="mt-4 p-2 bg-gray-100 rounded-md text-center">
-          현재 위치의 행정구역: <span className="font-bold">{address}</span>
-        </div>
-      )}
     </>
   );
 }

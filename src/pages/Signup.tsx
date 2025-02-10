@@ -35,7 +35,7 @@ export default function Signup() {
 
     axios
       .get(
-        import.meta.env.VITE_BASE_UTL + `/auth/validate?email=${formdata.email}`
+        import.meta.env.VITE_BASE_URL + `/auth/validate?email=${formdata.email}`
       )
       .then(({ data }) => {
         if (data.exist) {
@@ -50,8 +50,12 @@ export default function Signup() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post(import.meta.env.VITE_BASE_UTL + "/auth/signup", formdata)
-      .then(() => navigate("/login"))
+      .post(import.meta.env.VITE_BASE_URL + "/auth/signup", formdata)
+      .then(({ data }) => {
+        localStorage.setItem("accessToken", data.tokenType + data.token);
+        localStorage.setItem("refreshToken", data.refreshToken);
+        navigate("/setting/location");
+      })
       .catch((error) => {
         console.log(error);
         setError(error.response?.data?.message || "회원가입 실패");
