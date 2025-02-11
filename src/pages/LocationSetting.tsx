@@ -7,9 +7,9 @@ import { useNavigate } from "react-router-dom";
 export default function LocationSetting() {
   const navigator = useNavigate();
   const [location, setLocation] = useState({
-    address: "",
-    x: 127,
-    y: 37,
+    address: import.meta.env.VITE_DEFAULT_ADDRESS,
+    latitude: import.meta.env.VITE_DEFAULT_LATITUDE,
+    longitude: import.meta.env.VITE_DEFAULT_LONGITUDE,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,11 +22,11 @@ export default function LocationSetting() {
   return (
     <>
       <Header title="위치설정" />
-      <KakaoMap setLocation={setLocation} />
+      <KakaoMap location={location} setLocation={setLocation} />
       <div>
         <p>현재 위치: {location.address}</p>
-        <p>위도: {location.y}</p>
-        <p>경도: {location.x}</p>
+        <p>위도: {location.latitude}</p>
+        <p>경도: {location.longitude}</p>
       </div>
       <button onClick={handleSubmit} className="wideButton">
         제출하기

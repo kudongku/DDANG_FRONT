@@ -5,22 +5,27 @@ interface KakaoMapProps {
   setLocation: React.Dispatch<
     React.SetStateAction<{
       address: string;
-      x: number;
-      y: number;
+      latitude: number;
+      longitude: number;
     }>
   >;
+  location: {
+    address: string;
+    latitude: number;
+    longitude: number;
+  };
 }
 
-export default function KakaoMap({ setLocation }: KakaoMapProps) {
+export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
   const mapRef = useRef<kakao.maps.Map>(null);
   const [mapType, setMapType] = useState<"roadmap" | "skyview">("roadmap");
   const [position, setPosition] = useState({
-    lat: 33.450701,
-    lng: 126.570667,
+    lat: location.latitude,
+    lng: location.longitude,
   });
   const [center, setCenter] = useState({
-    lat: 33.450701,
-    lng: 126.570667,
+    lat: location.longitude,
+    lng: location.latitude,
   });
 
   const adjustZoom = (delta: number) => {
@@ -43,8 +48,8 @@ export default function KakaoMap({ setLocation }: KakaoMapProps) {
           if (result[i].region_type === "H") {
             setLocation({
               address: result[i].address_name,
-              x: result[i].x,
-              y: result[i].y,
+              latitude: result[i].x,
+              longitude: result[i].y,
             });
             break;
           }
