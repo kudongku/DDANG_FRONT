@@ -3,14 +3,14 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import MobileLayout from "./layouts/MobileLayout.tsx";
-import BodyLayout from "./layouts/BodyLayout.tsx";
+import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <MobileLayout>
-      <BodyLayout>
+    <BrowserRouter>
+      <MobileLayout>
         <App />
-      </BodyLayout>
-    </MobileLayout>
+      </MobileLayout>
+    </BrowserRouter>
   </StrictMode>
 );

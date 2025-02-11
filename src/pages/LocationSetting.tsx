@@ -21,7 +21,7 @@ export default function LocationSetting() {
   };
   return (
     <>
-      <Header title="회원가입" />
+      <Header title="위치설정" />
       <KakaoMap setLocation={setLocation} />
       <div>
         <p>현재 위치: {location.address}</p>
