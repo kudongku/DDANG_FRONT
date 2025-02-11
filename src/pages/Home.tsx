@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import api from "../apis/api";
-import Header from "../components/Header";
+import { useEffect, useState } from 'react';
+import api from '../apis/api';
+import Header from '../components/Header';
 
 export default function Home() {
   const [userInfo, setUserInfo] = useState({
-    email: "",
-    address: "",
+    email: '',
+    address: '',
   });
 
   const fetchUserInfo = async () => {
-    const { data } = await api.get("users/info");
+    const { data } = await api.get('users/info');
     setUserInfo(data);
   };
 

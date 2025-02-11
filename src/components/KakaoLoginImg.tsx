@@ -8,9 +8,7 @@ export default function KakaoLoginImg() {
         src="../kakao_login_large_wide.png"
         alt="Kakao Login"
         className="cursor-pointer w-full h-[70px] mx-auto object-contain hover:opacity-80 transition"
-        onClick={() =>
-          (window.location.href = kakaoOauthUrl + kakaoRedirectUrl)
-        }
+        onClick={() => (window.location.href = kakaoOauthUrl + kakaoRedirectUrl)}
       />
     </div>
   );

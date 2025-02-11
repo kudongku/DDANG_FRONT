@@ -1,8 +1,8 @@
-import { useState } from "react";
-import Header from "../components/Header";
-import KakaoMap from "../components/KakaoMap";
-import api from "../apis/api";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import Header from '../components/Header';
+import KakaoMap from '../components/KakaoMap';
+import api from '../apis/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function LocationSetting() {
   const navigator = useNavigate();
@@ -14,9 +14,9 @@ export default function LocationSetting() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { status } = await api.post("/users/location", location);
+    const { status } = await api.post('/users/location', location);
     if (status == 200) {
-      navigator("/");
+      navigator('/');
     }
   };
   return (

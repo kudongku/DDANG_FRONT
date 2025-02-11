@@ -1,5 +1,5 @@
-import { Map, MapMarker } from "react-kakao-maps-sdk";
-import { useEffect, useRef, useState } from "react";
+import { Map, MapMarker } from 'react-kakao-maps-sdk';
+import { useEffect, useRef, useState } from 'react';
 
 interface KakaoMapProps {
   setLocation: React.Dispatch<
@@ -18,7 +18,7 @@ interface KakaoMapProps {
 
 export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
   const mapRef = useRef<kakao.maps.Map>(null);
-  const [mapType, setMapType] = useState<"roadmap" | "skyview">("roadmap");
+  const [mapType, setMapType] = useState<'roadmap' | 'skyview'>('roadmap');
   const [position, setPosition] = useState({
     lat: location.latitude,
     lng: location.longitude,
@@ -45,7 +45,7 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
     geocoder.coord2RegionCode(lng, lat, (result, status) => {
       if (status === kakao.maps.services.Status.OK) {
         for (let i = 0; i < result.length; i++) {
-          if (result[i].region_type === "H") {
+          if (result[i].region_type === 'H') {
             setLocation({
               address: result[i].address_name,
               latitude: result[i].x,
@@ -60,7 +60,7 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
 
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
+      navigator.geolocation.getCurrentPosition(position => {
         setCenter({
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -69,10 +69,7 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
     }
   }, []);
 
-  const handleMapClick = (
-    _: kakao.maps.Map,
-    mouseEvent: kakao.maps.event.MouseEvent
-  ) => {
+  const handleMapClick = (_: kakao.maps.Map, mouseEvent: kakao.maps.event.MouseEvent) => {
     const latlng = mouseEvent.latLng;
     setPosition({ lat: latlng.getLat(), lng: latlng.getLng() });
     getAddressFromCoords(latlng.getLat(), latlng.getLng());
@@ -84,17 +81,17 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
         <div className="absolute top-2 left-2 flex z-10 p-1 rounded-md ">
           <button
             className={`px-2 py-1 rounded-l-md text-white transition ${
-              mapType === "roadmap" ? "bg-blue-500" : "bg-gray-500"
+              mapType === 'roadmap' ? 'bg-blue-500' : 'bg-gray-500'
             }`}
-            onClick={() => setMapType("roadmap")}
+            onClick={() => setMapType('roadmap')}
           >
             지도
           </button>
           <button
             className={`px-2 py-1 rounded-r-md text-white transition ${
-              mapType === "skyview" ? "bg-blue-500" : "bg-gray-500"
+              mapType === 'skyview' ? 'bg-blue-500' : 'bg-gray-500'
             }`}
-            onClick={() => setMapType("skyview")}
+            onClick={() => setMapType('skyview')}
           >
             스카이뷰
           </button>
@@ -105,7 +102,7 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
           center={center}
           className="w-full h-[350px] relative overflow-hidden rounded-lg"
           level={3}
-          mapTypeId={mapType === "roadmap" ? "ROADMAP" : "HYBRID"}
+          mapTypeId={mapType === 'roadmap' ? 'ROADMAP' : 'HYBRID'}
           ref={mapRef}
           onClick={handleMapClick}
         >
@@ -113,24 +110,16 @@ export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
         </Map>
 
         <div className="absolute bottom-2 flex z-10 bg-white rounded-md shadow-md overflow-hidden">
-          <button
-            className="px-2 py-1 bg-white-400 hover:bg-gray-200"
-            onClick={zoomIn}
-          >
+          <button className="px-2 py-1 bg-white-400 hover:bg-gray-200" onClick={zoomIn}>
             +
           </button>
-          <button
-            className="px-2 py-1 bg-white-400 hover:bg-gray-200"
-            onClick={zoomOut}
-          >
+          <button className="px-2 py-1 bg-white-400 hover:bg-gray-200" onClick={zoomOut}>
             -
           </button>
         </div>
       </div>
 
-      <p className="text-center text-gray-600 mt-4 font-semibold">
-        지도를 클릭해주세요!
-      </p>
+      <p className="text-center text-gray-600 mt-4 font-semibold">지도를 클릭해주세요!</p>
     </>
   );
 }

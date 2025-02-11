@@ -1,31 +1,30 @@
-import axios from "axios";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import HrOrHr from "../components/HrOrHr";
-import KakaoLoginImg from "../components/KakaoLoginImg";
-import Header from "../components/Header";
+import axios from 'axios';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import HrOrHr from '../components/HrOrHr';
+import KakaoLoginImg from '../components/KakaoLoginImg';
+import Header from '../components/Header';
 
 export default function Login() {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [emailValidation, setEmailValidation] = useState(false);
   const [formdata, setFormdata] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name === "email") {
+    if (name === 'email') {
       setEmailValidation(validateEmail(value));
     }
 
-    setFormdata((prev) => ({
+    setFormdata(prev => ({
       ...prev,
       [name]: value,
     }));
@@ -34,31 +33,25 @@ export default function Login() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     axios
-      .post(baseUrl + "/auth/login", formdata)
+      .post(baseUrl + '/auth/login', formdata)
       .then(({ data }) => {
-        localStorage.setItem("accessToken", data.tokenType + data.token);
-        localStorage.setItem("refreshToken", data.refreshToken);
-        navigate("/");
+        localStorage.setItem('accessToken', data.tokenType + data.token);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        navigate('/');
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
-        setError(error.response?.data || "로그인 실패");
+        setError(error.response?.data || '로그인 실패');
       });
   };
 
   return (
     <>
-      <Header title={"로그인"} />
+      <Header title={'로그인'} />
       <form className="space-y-4">
         <label className="label">
           이메일
-          <input
-            className="input"
-            type="text"
-            name="email"
-            onChange={handleChange}
-            placeholder="이메일을 입력하세요"
-          />
+          <input className="input" type="text" name="email" onChange={handleChange} placeholder="이메일을 입력하세요" />
         </label>
 
         <label className="label">
@@ -75,11 +68,7 @@ export default function Login() {
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button
-          onClick={handleSubmit}
-          disabled={!emailValidation}
-          className="wideButton"
-        >
+        <button onClick={handleSubmit} disabled={!emailValidation} className="wideButton">
           이메일로 로그인
         </button>
       </form>
