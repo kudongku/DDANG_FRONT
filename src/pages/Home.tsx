@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getUserInfoApi } from "../apis/users";
 import Header from "../components/Header";
 import { UserInfoResponse } from "../types";
+import GrayBanner from "../components/GrayBanner";
 
 export default function Home() {
   const [userInfo, setUserInfo] = useState<UserInfoResponse>({
@@ -22,9 +23,12 @@ export default function Home() {
   return (
     <>
       <Header title="홈" />
-      <div>
-        {userInfo.email}님, <br /> {userInfo.address} 근처의 경매들입니다.
-      </div>
+      <GrayBanner>
+        <span className="font-semibold">{userInfo.email}</span>님,
+        <br />
+        <span className="font-semibold">{userInfo.address}</span> 근처의
+        경매들입니다.
+      </GrayBanner>
     </>
   );
 }
