@@ -1,20 +1,26 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import KakaoMap from "../components/KakaoMap";
-import api from "../apis/api";
 import { useNavigate } from "react-router-dom";
+import {
+  DEFAULT_ADDRESS,
+  DEFAULT_LATITUDE,
+  DEFAULT_LONGITUDE,
+} from "../constants";
+import { LocationType } from "../types";
+import { setLocationApi } from "../apis/users";
 
 export default function LocationSetting() {
   const navigator = useNavigate();
-  const [location, setLocation] = useState({
-    address: import.meta.env.VITE_DEFAULT_ADDRESS,
-    latitude: import.meta.env.VITE_DEFAULT_LATITUDE,
-    longitude: import.meta.env.VITE_DEFAULT_LONGITUDE,
+  const [location, setLocation] = useState<LocationType>({
+    address: DEFAULT_ADDRESS,
+    latitude: DEFAULT_LATITUDE,
+    longitude: DEFAULT_LONGITUDE,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const { status } = await api.post("/users/location", location);
+    const { status } = await setLocationApi(location);
     if (status == 200) {
       navigator("/");
     }

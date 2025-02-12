@@ -1,12 +1,11 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import HrOrHr from "../components/HrOrHr";
 import KakaoLoginImg from "../components/KakaoLoginImg";
 import Header from "../components/Header";
+import { loginApi } from "../apis/auth";
 
 export default function Login() {
-  const baseUrl = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [emailValidation, setEmailValidation] = useState(false);
@@ -33,9 +32,8 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    axios
-      .post(baseUrl + "/auth/login", formdata)
-      .then(({ data }) => {
+    loginApi(formdata)
+      .then((data) => {
         localStorage.setItem("accessToken", data.tokenType + data.token);
         localStorage.setItem("refreshToken", data.refreshToken);
         navigate("/");

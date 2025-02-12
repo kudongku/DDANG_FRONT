@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import api from "../apis/api";
+import { getUserInfoApi } from "../apis/users";
 import Header from "../components/Header";
+import { UserInfoResponse } from "../types";
 
 export default function Home() {
-  const [userInfo, setUserInfo] = useState({
+  const [userInfo, setUserInfo] = useState<UserInfoResponse>({
     email: "",
     address: "",
   });
 
-  const fetchUserInfo = async () => {
-    const { data } = await api.get("users/info");
-    setUserInfo(data);
-  };
-
   useEffect(() => {
-    fetchUserInfo();
+    getUserInfoApi()
+      .then((data) => {
+        setUserInfo(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
 
   return (

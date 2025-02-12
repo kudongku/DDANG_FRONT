@@ -1,15 +1,14 @@
-export default function KakaoLoginImg() {
-  const kakaoOauthUrl = import.meta.env.VITE_KAKAO_OAUTH;
-  const kakaoRedirectUrl = import.meta.env.VITE_KAKAO_REDIRECT_URL;
+import { KAKAO_OAUTH, KAKAO_REDIRECT_URL } from "../constants";
 
+export default function KakaoLoginImg() {
   return (
     <div className="mt-6 text-center">
       <img
-        src="../kakao_login_large_wide.png"
+        src="/kakao_login_large_wide.png"
         alt="Kakao Login"
         className="cursor-pointer w-full h-[70px] mx-auto object-contain hover:opacity-80 transition"
         onClick={() =>
-          (window.location.href = kakaoOauthUrl + kakaoRedirectUrl)
+          (window.location.href = KAKAO_OAUTH + KAKAO_REDIRECT_URL)
         }
       />
     </div>

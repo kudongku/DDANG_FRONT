@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import { signupApi, validateEmailApi } from "../apis/auth";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -33,11 +33,8 @@ export default function Signup() {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
 
-    axios
-      .get(
-        import.meta.env.VITE_BASE_URL + `/auth/validate?email=${formdata.email}`
-      )
-      .then(({ data }) => {
+    validateEmailApi({ email: formdata.email })
+      .then((data) => {
         if (data.exist) {
           setError("존재하는 이메일입니다.");
         } else {
@@ -49,9 +46,8 @@ export default function Signup() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    axios
-      .post(import.meta.env.VITE_BASE_URL + "/auth/signup", formdata)
-      .then(({ data }) => {
+    signupApi(formdata)
+      .then((data) => {
         localStorage.setItem("accessToken", data.tokenType + data.token);
         localStorage.setItem("refreshToken", data.refreshToken);
         navigate("/setting/location");
@@ -93,7 +89,6 @@ export default function Signup() {
             type="password"
             name="password"
             onChange={handleChange}
-            disabled={!emailValidation}
           />
         </label>
 
@@ -104,7 +99,6 @@ export default function Signup() {
             type="password"
             name="password"
             onChange={handleChange}
-            disabled={!emailValidation}
           />
         </label>
 

@@ -1,19 +1,10 @@
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { useEffect, useRef, useState } from "react";
+import { LocationType } from "../types";
 
 interface KakaoMapProps {
-  setLocation: React.Dispatch<
-    React.SetStateAction<{
-      address: string;
-      latitude: number;
-      longitude: number;
-    }>
-  >;
-  location: {
-    address: string;
-    latitude: number;
-    longitude: number;
-  };
+  setLocation: React.Dispatch<React.SetStateAction<LocationType>>;
+  location: LocationType;
 }
 
 export default function KakaoMap({ location, setLocation }: KakaoMapProps) {
