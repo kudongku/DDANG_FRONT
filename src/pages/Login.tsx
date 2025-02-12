@@ -4,9 +4,11 @@ import HrOrHr from "../components/HrOrHr";
 import KakaoLoginImg from "../components/KakaoLoginImg";
 import Header from "../components/Header";
 import { loginApi } from "../apis/auth";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [emailValidation, setEmailValidation] = useState(false);
   const [formdata, setFormdata] = useState({
@@ -34,8 +36,7 @@ export default function Login() {
     e.preventDefault();
     loginApi(formdata)
       .then((data) => {
-        localStorage.setItem("accessToken", data.tokenType + data.token);
-        localStorage.setItem("refreshToken", data.refreshToken);
+        login(data.tokenType + data.token, data.refreshToken);
         navigate("/");
       })
       .catch((error) => {
@@ -76,7 +77,7 @@ export default function Login() {
         <button
           onClick={handleSubmit}
           disabled={!emailValidation}
-          className="wideButton"
+          className="wideButton blue"
         >
           이메일로 로그인
         </button>

@@ -34,7 +34,7 @@ export default function LocationSetting() {
         <p>위도: {location.latitude}</p>
         <p>경도: {location.longitude}</p>
       </div>
-      <button onClick={handleSubmit} className="wideButton">
+      <button onClick={handleSubmit} className="wideButton blue">
         제출하기
       </button>
     </>

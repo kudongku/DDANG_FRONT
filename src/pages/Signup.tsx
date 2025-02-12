@@ -105,7 +105,7 @@ export default function Signup() {
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
         <button
-          className="wideButton"
+          className="wideButton blue"
           onClick={handleSubmit}
           disabled={!emailValidation}
         >

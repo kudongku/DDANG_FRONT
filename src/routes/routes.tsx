@@ -3,26 +3,44 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import KakaoLogin from "../pages/KakaoLogin";
 import LocationSetting from "../pages/LocationSetting";
+import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Profile";
 
 export const routes = [
   {
     path: "/",
-    element: Home,
+    element: (
+      <PrivateRoute>
+        <Home />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/login",
-    element: Login,
+    element: <Login />,
   },
   {
     path: "/signup",
-    element: Signup,
+    element: <Signup />,
   },
   {
     path: "/auth/kakao",
-    element: KakaoLogin,
+    element: <KakaoLogin />,
   },
   {
     path: "/setting/location",
-    element: LocationSetting,
+    element: (
+      <PrivateRoute>
+        <LocationSetting />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/profile",
+    element: (
+      <PrivateRoute>
+        <Profile />
+      </PrivateRoute>
+    ),
   },
 ];
