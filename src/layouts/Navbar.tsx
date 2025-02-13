@@ -15,6 +15,12 @@ export default function Navbar() {
             <span className="text-xl">🏠</span>
           </Link>
           <Link
+            to="/create/auction"
+            className="flex flex-col items-center text-gray-700 hover:text-blue-500"
+          >
+            <span className="text-xl">🔨</span>
+          </Link>
+          <Link
             to="/setting/location"
             className="flex flex-col items-center text-gray-700 hover:text-blue-500"
           >

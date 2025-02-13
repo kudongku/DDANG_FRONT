@@ -58,3 +58,21 @@ export interface LoginResponse {
   token: string;
   refreshToken: string;
 }
+
+export interface AuctionListResponse {
+  auctions: AuctionDetailResponse[];
+}
+
+export interface AuctionDetailResponse {
+  title: string;
+  content: string;
+}
+
+export interface CreateAuctionRequest {
+  title: string;
+  content: string;
+}
+
+export interface CreateAuctionResponse {
+  auctionId: string;
+}

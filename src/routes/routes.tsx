@@ -5,6 +5,8 @@ import KakaoLogin from "../pages/KakaoLogin";
 import LocationSetting from "../pages/LocationSetting";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Profile";
+import CreateAuction from "../pages/CreateAuction";
+import AuctionDetail from "../pages/AuctionDetail";
 
 export const routes = [
   {
@@ -18,6 +20,22 @@ export const routes = [
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/create/auction",
+    element: (
+      <PrivateRoute>
+        <CreateAuction />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/auction/:auctionId",
+    element: (
+      <PrivateRoute>
+        <AuctionDetail />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/signup",
