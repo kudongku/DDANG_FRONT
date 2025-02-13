@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import { signupApi, validateEmailApi } from '../apis/auth';
+import Header from '../../components/Header';
+import { signupApi, validateEmailApi } from '../../apis/auth';
 
 export default function Signup() {
   const navigate = useNavigate();

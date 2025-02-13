@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Header from '../components/Header';
-import { createAuctionApi } from '../apis/auctions';
-import { CreateAuctionRequest } from '../types';
+import Header from '../../components/Header';
+import { createAuctionApi } from '../../apis/auctions';
+import { CreateAuctionRequest } from '../../types';
 import { useNavigate } from 'react-router-dom';
 import MDEditor from '@uiw/react-md-editor';
 
