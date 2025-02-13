@@ -47,7 +47,7 @@ export default function CreateAuction() {
 
         <label className="label">
           설명
-          <div className="container" data-color-mode="light">
+          <div data-color-mode="light">
             <MDEditor
               value={auction.content}
               onChange={handleContentChange}

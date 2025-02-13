@@ -76,3 +76,8 @@ export interface CreateAuctionRequest {
 export interface CreateAuctionResponse {
   auctionId: string;
 }
+
+export interface AuctionDetailResponse {
+  title: string;
+  content: string;
+}
