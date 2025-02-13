@@ -1,4 +1,4 @@
-import { KAKAO_OAUTH, KAKAO_REDIRECT_URL } from "../constants";
+import { KAKAO_OAUTH, KAKAO_REDIRECT_URL } from '../constants';
 
 export default function KakaoLoginImg() {
   return (
@@ -7,9 +7,7 @@ export default function KakaoLoginImg() {
         src="/kakao_login_large_wide.png"
         alt="Kakao Login"
         className="cursor-pointer w-full h-[70px] mx-auto object-contain hover:opacity-80 transition"
-        onClick={() =>
-          (window.location.href = KAKAO_OAUTH + KAKAO_REDIRECT_URL)
-        }
+        onClick={() => (window.location.href = KAKAO_OAUTH + KAKAO_REDIRECT_URL)}
       />
     </div>
   );

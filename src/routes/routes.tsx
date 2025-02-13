@@ -1,16 +1,16 @@
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import KakaoLogin from "../pages/KakaoLogin";
-import LocationSetting from "../pages/LocationSetting";
-import PrivateRoute from "./PrivateRoute";
-import Profile from "../pages/Profile";
-import CreateAuction from "../pages/CreateAuction";
-import AuctionDetail from "../pages/AuctionDetail";
+import Home from '../pages/Home';
+import Login from '../pages/Login';
+import Signup from '../pages/Signup';
+import KakaoLogin from '../pages/KakaoLogin';
+import LocationSetting from '../pages/LocationSetting';
+import PrivateRoute from './PrivateRoute';
+import Profile from '../pages/Profile';
+import CreateAuction from '../pages/CreateAuction';
+import AuctionDetail from '../pages/AuctionDetail';
 
 export const routes = [
   {
-    path: "/",
+    path: '/',
     element: (
       <PrivateRoute>
         <Home />
@@ -18,11 +18,11 @@ export const routes = [
     ),
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
   {
-    path: "/create/auction",
+    path: '/create/auction',
     element: (
       <PrivateRoute>
         <CreateAuction />
@@ -30,7 +30,7 @@ export const routes = [
     ),
   },
   {
-    path: "/auction/:auctionId",
+    path: '/auction/:auctionId',
     element: (
       <PrivateRoute>
         <AuctionDetail />
@@ -38,15 +38,15 @@ export const routes = [
     ),
   },
   {
-    path: "/signup",
+    path: '/signup',
     element: <Signup />,
   },
   {
-    path: "/auth/kakao",
+    path: '/auth/kakao',
     element: <KakaoLogin />,
   },
   {
-    path: "/setting/location",
+    path: '/setting/location',
     element: (
       <PrivateRoute>
         <LocationSetting />
@@ -54,7 +54,7 @@ export const routes = [
     ),
   },
   {
-    path: "/profile",
+    path: '/profile',
     element: (
       <PrivateRoute>
         <Profile />

@@ -1,15 +1,13 @@
-import api from "../../configs/axios";
-import { AuctionListResponse, CreateAuctionRequest, CreateAuctionResponse } from "../../types";
-import { AuctionDetailResponse } from "../../types";
+import api from '../../configs/axios';
+import { AuctionListResponse, CreateAuctionRequest, CreateAuctionResponse } from '../../types';
+import { AuctionDetailResponse } from '../../types';
 
 export const getAuctionListApi = async (): Promise<AuctionListResponse> => {
-  const { data } = await api.get("/auctions");
+  const { data } = await api.get('/auctions');
   return data;
 };
 
-export const getAuctionDetailApi = async (
-  auctionId: string
-): Promise<AuctionDetailResponse> => {
+export const getAuctionDetailApi = async (auctionId: string): Promise<AuctionDetailResponse> => {
   const { data } = await api.get(`/auctions/${auctionId}`);
   return data;
 };
@@ -17,6 +15,6 @@ export const getAuctionDetailApi = async (
 export const createAuctionApi = async (
   request: CreateAuctionRequest
 ): Promise<CreateAuctionResponse> => {
-  const { data } = await api.post("/auctions", request);
+  const { data } = await api.post('/auctions', request);
   return data;
 };

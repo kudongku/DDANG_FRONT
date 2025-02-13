@@ -1,14 +1,10 @@
-import { useState } from "react";
-import Header from "../components/Header";
-import KakaoMap from "../components/KakaoMap";
-import { useNavigate } from "react-router-dom";
-import {
-  DEFAULT_ADDRESS,
-  DEFAULT_LATITUDE,
-  DEFAULT_LONGITUDE,
-} from "../constants";
-import { LocationType } from "../types";
-import { setLocationApi } from "../apis/users";
+import { useState } from 'react';
+import Header from '../components/Header';
+import KakaoMap from '../components/KakaoMap';
+import { useNavigate } from 'react-router-dom';
+import { DEFAULT_ADDRESS, DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../constants';
+import { LocationType } from '../types';
+import { setLocationApi } from '../apis/users';
 
 export default function LocationSetting() {
   const navigator = useNavigate();
@@ -22,7 +18,7 @@ export default function LocationSetting() {
     e.preventDefault();
     const { status } = await setLocationApi(location);
     if (status == 200) {
-      navigator("/");
+      navigator('/');
     }
   };
   return (

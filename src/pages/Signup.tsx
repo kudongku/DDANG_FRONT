@@ -1,26 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import { signupApi, validateEmailApi } from "../apis/auth";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
+import { signupApi, validateEmailApi } from '../apis/auth';
 
 export default function Signup() {
   const navigate = useNavigate();
 
   const [validateButton, activateValidateButton] = useState(false);
   const [emailValidation, setEmailValidation] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [formdata, setFormdata] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name === "email") {
+    if (name === 'email') {
       activateValidateButton(validateEmail(value));
     }
 
@@ -36,7 +35,7 @@ export default function Signup() {
     validateEmailApi({ email: formdata.email })
       .then((data) => {
         if (data.exist) {
-          setError("존재하는 이메일입니다.");
+          setError('존재하는 이메일입니다.');
         } else {
           setEmailValidation(!data.exist);
         }
@@ -48,13 +47,13 @@ export default function Signup() {
     e.preventDefault();
     signupApi(formdata)
       .then((data) => {
-        localStorage.setItem("accessToken", data.tokenType + data.token);
-        localStorage.setItem("refreshToken", data.refreshToken);
-        navigate("/setting/location");
+        localStorage.setItem('accessToken', data.tokenType + data.token);
+        localStorage.setItem('refreshToken', data.refreshToken);
+        navigate('/setting/location');
       })
       .catch((error) => {
         console.log(error);
-        setError(error.response?.data?.message || "회원가입 실패");
+        setError(error.response?.data?.message || '회원가입 실패');
       });
   };
 
@@ -84,31 +83,17 @@ export default function Signup() {
 
         <label className="label">
           비밀번호
-          <input
-            className="input"
-            type="password"
-            name="password"
-            onChange={handleChange}
-          />
+          <input className="input" type="password" name="password" onChange={handleChange} />
         </label>
 
         <label className="label">
           비밀번호 확인
-          <input
-            className="input"
-            type="password"
-            name="password"
-            onChange={handleChange}
-          />
+          <input className="input" type="password" name="password" onChange={handleChange} />
         </label>
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button
-          className="wideButton blue"
-          onClick={handleSubmit}
-          disabled={!emailValidation}
-        >
+        <button className="wideButton blue" onClick={handleSubmit} disabled={!emailValidation}>
           제출하기
         </button>
       </form>

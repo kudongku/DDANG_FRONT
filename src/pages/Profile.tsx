@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import Header from "../components/Header";
-import { useAuth } from "../contexts/AuthContext";
-import { UserInfoResponse } from "../types";
-import { getUserInfoApi } from "../apis/users";
-import GrayBanner from "../components/GrayBanner";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import Header from '../components/Header';
+import { useAuth } from '../contexts/AuthContext';
+import { UserInfoResponse } from '../types';
+import { getUserInfoApi } from '../apis/users';
+import GrayBanner from '../components/GrayBanner';
 
 export default function Profile() {
   const { logout } = useAuth();
   const [userInfo, setUserInfo] = useState<UserInfoResponse>({
-    email: "",
-    address: "",
+    email: '',
+    address: '',
   });
 
   useEffect(() => {

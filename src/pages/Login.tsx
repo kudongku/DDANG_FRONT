@@ -1,28 +1,27 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import HrOrHr from "../components/HrOrHr";
-import KakaoLoginImg from "../components/KakaoLoginImg";
-import Header from "../components/Header";
-import { loginApi } from "../apis/auth";
-import { useAuth } from "../contexts/AuthContext";
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import HrOrHr from '../components/HrOrHr';
+import KakaoLoginImg from '../components/KakaoLoginImg';
+import Header from '../components/Header';
+import { loginApi } from '../apis/auth';
+import { useAuth } from '../contexts/AuthContext';
 
 export default function Login() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [emailValidation, setEmailValidation] = useState(false);
   const [formdata, setFormdata] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    if (name === "email") {
+    if (name === 'email') {
       setEmailValidation(validateEmail(value));
     }
 
@@ -37,17 +36,17 @@ export default function Login() {
     loginApi(formdata)
       .then((data) => {
         login(data.tokenType + data.token, data.refreshToken);
-        navigate("/");
+        navigate('/');
       })
       .catch((error) => {
         console.log(error);
-        setError(error.response?.data || "로그인 실패");
+        setError(error.response?.data || '로그인 실패');
       });
   };
 
   return (
     <>
-      <Header title={"로그인"} />
+      <Header title={'로그인'} />
       <form className="space-y-4">
         <label className="label">
           이메일
@@ -74,11 +73,7 @@ export default function Login() {
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button
-          onClick={handleSubmit}
-          disabled={!emailValidation}
-          className="wideButton blue"
-        >
+        <button onClick={handleSubmit} disabled={!emailValidation} className="wideButton blue">
           이메일로 로그인
         </button>
       </form>

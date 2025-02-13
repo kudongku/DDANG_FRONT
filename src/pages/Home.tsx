@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import { getUserInfoApi } from "../apis/users";
-import Header from "../components/Header";
-import { UserInfoResponse } from "../types";
-import GrayBanner from "../components/GrayBanner";
+import { useEffect, useState } from 'react';
+import { getUserInfoApi } from '../apis/users';
+import Header from '../components/Header';
+import { UserInfoResponse } from '../types';
+import GrayBanner from '../components/GrayBanner';
 
 export default function Home() {
   const [userInfo, setUserInfo] = useState<UserInfoResponse>({
-    email: "",
-    address: "",
+    email: '',
+    address: '',
   });
 
   useEffect(() => {
@@ -26,8 +26,7 @@ export default function Home() {
       <GrayBanner>
         <span className="font-semibold">{userInfo.email}</span>님,
         <br />
-        <span className="font-semibold">{userInfo.address}</span> 근처의
-        경매들입니다.
+        <span className="font-semibold">{userInfo.address}</span> 근처의 경매들입니다.
       </GrayBanner>
     </>
   );
