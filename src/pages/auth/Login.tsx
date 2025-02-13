@@ -36,7 +36,9 @@ export default function Login() {
     loginApi(formdata)
       .then((data) => {
         login(data.tokenType + data.token, data.refreshToken);
-        navigate('/');
+        setTimeout(() => {
+          navigate('/', { replace: true });
+        }, 0);
       })
       .catch((error) => {
         console.log(error);

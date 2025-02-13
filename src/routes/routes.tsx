@@ -7,7 +7,7 @@ import PrivateRoute from './PrivateRoute';
 import Profile from '../pages/Profile';
 import CreateAuction from '../pages/auctions/CreateAuction';
 import AuctionDetail from '../pages/auctions/AuctionDetail';
-
+import NonPrivateRoute from './NonPrivateRoute';
 export const routes = [
   {
     path: '/',
@@ -19,7 +19,11 @@ export const routes = [
   },
   {
     path: '/login',
-    element: <Login />,
+    element: (
+      <NonPrivateRoute>
+        <Login />
+      </NonPrivateRoute>
+    ),
   },
   {
     path: '/create/auction',
