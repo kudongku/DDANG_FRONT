@@ -1,4 +1,4 @@
-import { Action } from 'redux';
+import { createAction, handleActions } from 'redux-actions';
 
 /*
 액션 타입 정의
@@ -9,8 +9,8 @@ const INCREASE = 'counter/INCREASE';
 const DECREASE = 'counter/DECREASE';
 
 // 액션 생성 함수
-export const increase = () => ({ type: INCREASE });
-export const decrease = () => ({ type: DECREASE });
+export const increase = createAction(INCREASE);
+export const decrease = createAction(DECREASE);
 
 // 초기 상태
 const initialState = {
@@ -18,19 +18,18 @@ const initialState = {
 };
 
 // 리듀서 함수
-export default function counter(state = initialState, action: Action) {
-  switch (action.type) {
-    case INCREASE:
-      return {
-        ...state,
-        number: state.number + 1,
-      };
-    case DECREASE:
-      return {
-        ...state,
-        number: state.number - 1,
-      };
-    default:
-      return state;
-  }
-}
+const counter = handleActions(
+  {
+    [INCREASE]: (state) => ({
+      ...state,
+      number: state.number + 1,
+    }),
+    [DECREASE]: (state) => ({
+      ...state,
+      number: state.number - 1,
+    }),
+  },
+  initialState
+);
+
+export default counter;
