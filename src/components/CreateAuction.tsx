@@ -36,6 +36,9 @@ const CreateAuction = ({
         <div data-color-mode="light">
           <MDEditor
             height={300}
+            textareaProps={{
+              placeholder: '내용을 입력하세요',
+            }}
             value={content}
             onChange={(value) => onChangeContent(value || '')}
             preview="edit"
