@@ -5,9 +5,10 @@ import KakaoLogin from '../pages/auth/KakaoLogin';
 import LocationSetting from '../pages/LocationSetting';
 import PrivateRoute from './PrivateRoute';
 import Profile from '../pages/Profile';
-import CreateAuction from '../pages/auctions/CreateAuction';
+import CreateAuction from '../pages/auctions/CreateAuctionPage';
 import AuctionDetail from '../pages/auctions/AuctionDetail';
 import NonPrivateRoute from './NonPrivateRoute';
+
 export const routes = [
   {
     path: '/',
