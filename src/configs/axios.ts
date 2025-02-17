@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants';
 import { refreshTokenApi } from '../apis/auth';
+import useAuth from '../hooks/useAuth';
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -36,7 +37,6 @@ api.interceptors.response.use(
 
       try {
         const refreshToken = localStorage.getItem('refreshToken');
-
         if (refreshToken) {
           const data = await refreshTokenApi({ refreshToken });
           localStorage.setItem('accessToken', data.tokenType + data.token);
@@ -46,9 +46,9 @@ api.interceptors.response.use(
           window.location.href = '/login';
         }
       } catch (refreshError) {
+        const { logout } = useAuth();
+        logout();
         console.error('토큰 갱신 실패:', refreshError);
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
         window.location.href = '/login';
       }
     }
