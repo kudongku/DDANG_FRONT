@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Header from '../components/Header';
-import { useAuth } from '../contexts/AuthContext';
+import useAuth from '../hooks/useAuth';
 import { UserInfoResponse } from '../types';
 import { getUserInfoApi } from '../apis/users';
 import GrayBanner from '../components/GrayBanner';

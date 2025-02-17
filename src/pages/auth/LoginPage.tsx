@@ -4,7 +4,7 @@ import HrOrHr from '../../components/HrOrHr';
 import KakaoLoginImg from '../../components/KakaoLoginImg';
 import Header from '../../components/Header';
 import { loginApi } from '../../apis/auth';
-import { useAuth } from '../../contexts/AuthContext';
+import useAuth from '../../hooks/useAuth';
 
 export default function Login() {
   const navigate = useNavigate();
