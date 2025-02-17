@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { getUserInfoApi } from '../apis/users';
 import Header from '../components/Header';
-import { AuthUserInfoResponse } from '../types';
+import { AuthUserInfoResponse, AuctionListResponse } from '../types';
 import GrayBanner from '../components/GrayBanner';
+import { getAuctionListApi } from '../apis';
+import AuctionThumbnail from '../components/AuctionThumbnail';
 
 export default function Home() {
   const [userInfo, setUserInfo] = useState<AuthUserInfoResponse>({
     email: '',
     address: '',
+  });
+
+  const [auctions, setAuctions] = useState<AuctionListResponse>({
+    auctions: [],
   });
 
   useEffect(() => {
@@ -20,6 +26,12 @@ export default function Home() {
       });
   }, []);
 
+  useEffect(() => {
+    getAuctionListApi().then((data) => {
+      setAuctions(data);
+    });
+  }, []);
+
   return (
     <>
       <Header title="홈" />
@@ -28,6 +40,11 @@ export default function Home() {
         <br />
         <span className="font-semibold">{userInfo.address}</span> 근처의 경매들입니다.
       </GrayBanner>
+      <div className="flex flex-col gap-4 p-4">
+        {auctions.auctions.map((auction) => (
+          <AuctionThumbnail key={auction.auctionId} auction={auction} />
+        ))}
+      </div>
     </>
   );
 }
