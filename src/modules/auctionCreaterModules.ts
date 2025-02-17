@@ -1,6 +1,6 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Action, ActionFunctionAny, createAction, handleActions } from 'redux-actions';
-import { createAuctionApi } from '../apis/auctions';
+import { createAuctionApi } from '../apis';
 import { AuctionRequest } from '../types';
 
 /**

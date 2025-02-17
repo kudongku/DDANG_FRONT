@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getUserInfoApi } from '../apis/users';
 import Header from '../components/Header';
 import { AuthUserInfoResponse, AuctionListResponse } from '../types';
 import GrayBanner from '../components/GrayBanner';
-import { getAuctionListApi } from '../apis';
+import { getAuctionListApi, getUserInfoApi } from '../apis';
 import AuctionThumbnail from '../components/AuctionThumbnail';
 
 export default function Home() {

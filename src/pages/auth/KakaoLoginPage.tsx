@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { kakaoLoginApi } from '../../apis/auth';
+import { kakaoLoginApi } from '../../apis';
 import { useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 

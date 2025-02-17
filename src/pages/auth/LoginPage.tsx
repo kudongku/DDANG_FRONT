@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import HrOrHr from '../../components/HrOrHr';
 import KakaoLoginImg from '../../components/KakaoLoginImg';
 import Header from '../../components/Header';
-import { loginApi } from '../../apis/auth';
+import { loginApi } from '../../apis';
 import useAuth from '../../hooks/useAuth';
 
 export default function Login() {

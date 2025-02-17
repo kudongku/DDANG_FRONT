@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
-import { getAuctionDetailApi } from '../../apis/auctions';
+import { getAuctionDetailApi } from '../../apis';
 import { useEffect, useState } from 'react';
 import { AuctionResponse } from '../../types';
 import MDEditor from '@uiw/react-md-editor';

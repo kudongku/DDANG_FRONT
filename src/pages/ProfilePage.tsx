@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import useAuth from '../hooks/useAuth';
 import { AuthUserInfoResponse } from '../types';
-import { getUserInfoApi } from '../apis/users';
+import { getUserInfoApi } from '../apis';
 import GrayBanner from '../components/GrayBanner';
 
 export default function Profile() {

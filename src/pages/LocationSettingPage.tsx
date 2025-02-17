@@ -4,7 +4,7 @@ import KakaoMap from '../components/KakaoMap';
 import { useNavigate } from 'react-router-dom';
 import { DEFAULT_ADDRESS, DEFAULT_LATITUDE, DEFAULT_LONGITUDE } from '../constants';
 import { LocationType } from '../types';
-import { setLocationApi } from '../apis/users';
+import { setLocationApi } from '../apis';
 
 export default function LocationSetting() {
   const navigator = useNavigate();

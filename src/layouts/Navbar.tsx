@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import NavTile from '../components/NavTile';
 
 export default function Navbar() {
   const { isLoggedIn } = useAuth();
@@ -8,27 +8,10 @@ export default function Navbar() {
     isLoggedIn && (
       <nav className="fixed mx-auto bottom-0 w-full max-w-[430px] bg-white border-t border-gray-300 h-16 shadow-md">
         <div className="flex justify-around items-center h-full">
-          <Link to="/" className="flex flex-col items-center text-gray-700 hover:text-blue-500">
-            <span className="text-xl">🏠</span>
-          </Link>
-          <Link
-            to="/create/auction"
-            className="flex flex-col items-center text-gray-700 hover:text-blue-500"
-          >
-            <span className="text-xl">🔨</span>
-          </Link>
-          <Link
-            to="/setting/location"
-            className="flex flex-col items-center text-gray-700 hover:text-blue-500"
-          >
-            <span className="text-xl">🧭</span>
-          </Link>
-          <Link
-            to="/profile"
-            className="flex flex-col items-center text-gray-700 hover:text-blue-500"
-          >
-            <span className="text-xl">👤</span>
-          </Link>
+          <NavTile to="/" icon="🏠" />
+          <NavTile to="/create/auction" icon="🔨" />
+          <NavTile to="/setting/location" icon="🧭" />
+          <NavTile to="/profile" icon="👤" />
         </div>
       </nav>
     )
