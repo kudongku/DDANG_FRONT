@@ -4,19 +4,9 @@ import './styles/index.css';
 import App from './App.tsx';
 import MobileLayout from './layouts/MobileLayout.tsx';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext.tsx';
+import AuthProvider from './providers/AuthProvider.tsx';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './modules';
-
-/**
- * 스토어 생성
- * 크롬의 Redux DevTools 확장 프로그램을 사용하면 더 쉽게 디버깅할 수 있음
- */
-const store = configureStore({
-  reducer: rootReducer,
-  devTools: true,
-});
+import store from './configs/store.ts';
 
 /**
  * provider 렌더링
