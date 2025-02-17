@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Header from '../components/Header';
 import useAuth from '../hooks/useAuth';
-import { UserInfoResponse } from '../types';
+import { AuthUserInfoResponse } from '../types';
 import { getUserInfoApi } from '../apis/users';
 import GrayBanner from '../components/GrayBanner';
 
 export default function Profile() {
   const { logout } = useAuth();
-  const [userInfo, setUserInfo] = useState<UserInfoResponse>({
+  const [userInfo, setUserInfo] = useState<AuthUserInfoResponse>({
     email: '',
     address: '',
   });

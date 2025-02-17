@@ -1,7 +1,7 @@
 import api from '../../configs/axios';
-import { LocationType, UserInfoResponse } from '../../types';
+import { LocationType, AuthUserInfoResponse } from '../../types';
 
-export const getUserInfoApi = async (): Promise<UserInfoResponse> => {
+export const getUserInfoApi = async (): Promise<AuthUserInfoResponse> => {
   const { data } = await api.get('/users/info');
   return data;
 };

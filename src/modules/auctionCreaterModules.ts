@@ -1,7 +1,7 @@
 import { createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Action, ActionFunctionAny, createAction, handleActions } from 'redux-actions';
 import { createAuctionApi } from '../apis/auctions';
-import { CreateAuctionRequest } from '../types';
+import { AuctionRequest } from '../types';
 
 /**
  * 액션 타입 정의
@@ -25,7 +25,7 @@ export const changeContent: ActionFunctionAny<Action<string>> = createAction(CHA
 
 export const createAuctionAsync = createAsyncThunk(
   CREATE_AUCTION, // 액션 타입
-  async (data: CreateAuctionRequest) => {
+  async (data: AuctionRequest) => {
     // api 호출
     const response = await createAuctionApi(data);
     return response;

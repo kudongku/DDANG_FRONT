@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getUserInfoApi } from '../apis/users';
 import Header from '../components/Header';
-import { UserInfoResponse } from '../types';
+import { AuthUserInfoResponse } from '../types';
 import GrayBanner from '../components/GrayBanner';
 
 export default function Home() {
-  const [userInfo, setUserInfo] = useState<UserInfoResponse>({
+  const [userInfo, setUserInfo] = useState<AuthUserInfoResponse>({
     email: '',
     address: '',
   });

@@ -2,13 +2,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import { getAuctionDetailApi } from '../../apis/auctions';
 import { useEffect, useState } from 'react';
-import { AuctionDetailResponse } from '../../types';
+import { AuctionResponse } from '../../types';
 import MDEditor from '@uiw/react-md-editor';
 
 export default function AuctionDetail() {
   const navigate = useNavigate();
   const { auctionId } = useParams<{ auctionId: string }>();
-  const [auction, setAuction] = useState<AuctionDetailResponse | null>(null);
+  const [auction, setAuction] = useState<AuctionResponse | null>(null);
 
   useEffect(() => {
     if (auctionId) {
