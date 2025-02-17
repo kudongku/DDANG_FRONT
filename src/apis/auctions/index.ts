@@ -1,5 +1,5 @@
 import api from '../../configs/axios';
-import { AuctionListResponse, CreateAuctionRequest, CreateAuctionResponse } from '../../types';
+import { AuctionListResponse, CreateAuctionRequest } from '../../types';
 import { AuctionDetailResponse } from '../../types';
 
 export const getAuctionListApi = async (): Promise<AuctionListResponse> => {
@@ -12,9 +12,7 @@ export const getAuctionDetailApi = async (auctionId: string): Promise<AuctionDet
   return data;
 };
 
-export const createAuctionApi = async (
-  request: CreateAuctionRequest
-): Promise<CreateAuctionResponse> => {
+export const createAuctionApi = async (request: CreateAuctionRequest) => {
   const { data } = await api.post('/auctions', request);
   return data;
 };
