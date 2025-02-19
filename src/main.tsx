@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+// import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import App from './App.tsx';
@@ -13,15 +13,15 @@ import store from './configs/store.ts';
  * (provider는 스토어를 제공하는 컴포넌트)
  */
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <AuthProvider>
-          <MobileLayout>
-            <App />
-          </MobileLayout>
-        </AuthProvider>
-      </BrowserRouter>
-    </Provider>
-  </StrictMode>
+  // <StrictMode>
+  <Provider store={store}>
+    <BrowserRouter>
+      <AuthProvider>
+        <MobileLayout>
+          <App />
+        </MobileLayout>
+      </AuthProvider>
+    </BrowserRouter>
+  </Provider>
+  // </StrictMode>
 );

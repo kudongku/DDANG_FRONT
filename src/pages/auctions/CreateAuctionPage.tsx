@@ -1,5 +1,5 @@
 import Header from '../../components/Header';
-import CreateAuctionContainer from '../../components/CreateAuctionContainer';
+import CreateAuctionContainer from '../../components/auction/CreateAuctionContainer';
 
 export default function CreateAuction() {
   return (

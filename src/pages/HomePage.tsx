@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import AuctionList from '../components/AuctionList';
+import AuctionList from '../components/auction/AuctionList';
 import UserInfo from '../components/UserInfo';
 
 export default function Home() {

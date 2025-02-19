@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
+import { AuctionResponse } from '../../types';
+import { getAuctionListApi } from '../../apis';
+import InfiniteScroll from '../InfiniteScroll';
 import AuctionThumbnail from './AuctionThumbnail';
-import { AuctionResponse } from '../types';
-import { getAuctionListApi } from '../apis';
-import InfiniteScroll from './InfiniteScroll';
 
 export default function AuctionList() {
   const [auctions, setAuctions] = useState<AuctionResponse[]>([]);
