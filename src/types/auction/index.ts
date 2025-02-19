@@ -16,6 +16,7 @@ export interface AuctionResponse {
 
 export interface AuctionListResponse {
   auctions: AuctionResponse[];
+  last: boolean;
 }
 
 export interface AuctionCreateResponse {
