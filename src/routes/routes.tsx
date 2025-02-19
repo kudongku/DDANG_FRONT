@@ -1,12 +1,12 @@
-import Home from '../pages/HomePage';
-import Login from '../pages/auth/LoginPage';
-import Signup from '../pages/auth/SignupPage';
-import KakaoLogin from '../pages/auth/KakaoLoginPage';
-import LocationSetting from '../pages/LocationSettingPage';
+import Home from '../components/pages/HomePage';
+import Login from '../components/pages/auth/LoginPage';
+import Signup from '../components/pages/auth/SignupPage';
+import KakaoLogin from '../components/pages/auth/KakaoLoginPage';
+import LocationSetting from '../components/pages/LocationSettingPage';
 import PrivateRoute from './PrivateRoute';
-import Profile from '../pages/ProfilePage';
-import CreateAuction from '../pages/auctions/CreateAuctionPage';
-import AuctionDetail from '../pages/auctions/AuctionDetailPage';
+import Profile from '../components/pages/ProfilePage';
+import CreateAuction from '../components/pages/auctions/CreateAuctionPage';
+import AuctionDetail from '../components/pages/auctions/AuctionDetailPage';
 import NonPrivateRoute from './NonPrivateRoute';
 
 export const routes = [

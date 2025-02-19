@@ -1,9 +1,10 @@
 import { Map, MapMarker } from 'react-kakao-maps-sdk';
 import { useState } from 'react';
-import useLocationStore from '../../stores/location';
+
 import MapTypeButton from './MapTypeButton';
 import ZoonButton from './ZoonButton';
 import FindMyLocationButton from './FindMyLocationButton';
+import useLocationStore from '../../../stores/location';
 
 export default function KakaoMap() {
   const { location, setLocation, mapType, zoomLevel } = useLocationStore();

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import Header from '../components/Header';
-import useAuth from '../hooks/useAuth';
-import { AuthUserInfoResponse } from '../types';
-import { getUserInfoApi } from '../apis';
-import GrayBanner from '../components/GrayBanner';
+import GrayBanner from '../molecule/GrayBanner';
+import Header from '../molecule/Header';
+import useAuth from '../../hooks/useAuth';
+import { AuthUserInfoResponse } from '../../types';
+import { getUserInfoApi } from '../../apis';
 
 export default function Profile() {
   const { logout } = useAuth();

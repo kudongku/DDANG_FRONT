@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import useLocationStore from '../stores/location';
-import { setLocationApi } from '../apis';
-import Header from '../components/molecule/Header';
-import KakaoMap from '../components/organism/kakaoMap/KakaoMap';
-import GrayBanner from '../components/molecule/GrayBanner';
+import { setLocationApi } from '../../apis';
+import useLocationStore from '../../stores/location';
+import GrayBanner from '../molecule/GrayBanner';
+import Header from '../molecule/Header';
+import KakaoMap from '../organism/kakaoMap/KakaoMap';
 
 export default function LocationSetting() {
   const navigator = useNavigate();

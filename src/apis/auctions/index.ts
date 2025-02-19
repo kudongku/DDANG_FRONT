@@ -1,4 +1,4 @@
-import api from '../../configs/axios';
+import api from '..';
 import { AuctionListResponse, AuctionRequest, AuctionResponse } from '../../types';
 
 export const getAuctionListApi = async (page: number): Promise<AuctionListResponse> => {

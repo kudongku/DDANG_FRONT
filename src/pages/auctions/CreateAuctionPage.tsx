@@ -1,5 +1,5 @@
-import Header from '../../components/Header';
-import CreateAuctionContainer from '../../components/auction/CreateAuctionContainer';
+import Header from '../../components/molecule/Header';
+import CreateAuctionContainer from '../../components/organism/auction/CreateAuctionContainer';
 
 export default function CreateAuction() {
   return (

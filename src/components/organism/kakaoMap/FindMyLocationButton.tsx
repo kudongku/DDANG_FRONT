@@ -1,4 +1,4 @@
-import useLocationStore from '../../stores/location';
+import useLocationStore from '../../../stores/location';
 
 export default function FindMyLocationButton() {
   const { setLocation } = useLocationStore();

@@ -6,7 +6,7 @@ import MobileLayout from './layouts/MobileLayout.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './providers/AuthProvider.tsx';
 import { Provider } from 'react-redux';
-import store from './configs/store.ts';
+import store from './stores/index.ts';
 
 /**
  * provider 렌더링

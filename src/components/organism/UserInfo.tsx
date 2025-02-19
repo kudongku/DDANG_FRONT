@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import GrayBanner from './GrayBanner';
-import { getUserInfoApi } from '../apis';
-import { AuthUserInfoResponse } from '../types';
+import GrayBanner from '../molecule/GrayBanner';
+import { getUserInfoApi } from '../../apis';
+import { AuthUserInfoResponse } from '../../types';
 
 export default function UserInfo() {
   const [userInfo, setUserInfo] = useState<AuthUserInfoResponse>({

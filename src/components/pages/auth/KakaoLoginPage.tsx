@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { kakaoLoginApi } from '../../apis';
 import { useEffect } from 'react';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+import { kakaoLoginApi } from '../../../apis';
 
 export default function KakaoLogin() {
   const navigate = useNavigate();

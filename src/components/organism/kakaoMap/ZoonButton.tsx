@@ -1,4 +1,4 @@
-import useLocationStore from '../../stores/location';
+import useLocationStore from '../../../stores/location';
 
 export default function ZoonButton() {
   const { zoomLevel, setZoomLevel } = useLocationStore();

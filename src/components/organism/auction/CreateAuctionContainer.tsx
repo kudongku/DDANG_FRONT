@@ -4,10 +4,10 @@ import {
   changeContent,
   AuctionCreaterState,
   createAuctionAsync,
-} from '../../modules/auctionCreaterModules';
+} from '../../../modules/auctionCreaterModules';
 import CreateAuction from './CreateAuction';
 import { useNavigate } from 'react-router-dom';
-import useActions from '../../hooks/useActions';
+import useActions from '../../../hooks/useActions';
 
 /**
  * container component

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { AuctionResponse } from '../../types';
-import { getAuctionListApi } from '../../apis';
+import { AuctionResponse } from '../../../types';
+import { getAuctionListApi } from '../../../apis';
 import InfiniteScroll from '../InfiniteScroll';
 import AuctionThumbnail from './AuctionThumbnail';
 

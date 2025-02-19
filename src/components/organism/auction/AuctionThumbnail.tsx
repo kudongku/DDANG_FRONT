@@ -1,4 +1,4 @@
-import { AuctionResponse } from '../../types';
+import { AuctionResponse } from '../../../types';
 import { useNavigate } from 'react-router-dom';
 
 interface AuctionThumbnailProps {

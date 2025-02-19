@@ -1,4 +1,4 @@
-import { KAKAO_OAUTH, KAKAO_REDIRECT_URL } from '../constants';
+import { KAKAO_OAUTH, KAKAO_REDIRECT_URL } from '../../constants';
 
 export default function KakaoLoginImg() {
   return (

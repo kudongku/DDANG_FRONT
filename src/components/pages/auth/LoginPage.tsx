@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import HrOrHr from '../../components/HrOrHr';
-import KakaoLoginImg from '../../components/KakaoLoginImg';
-import Header from '../../components/Header';
-import { loginApi } from '../../apis';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
+import { loginApi } from '../../../apis';
+import Header from '../../molecule/Header';
+import HrOrHr from '../../molecule/HrOrHr';
+import KakaoLoginImg from '../../molecule/KakaoLoginImg';
 
 export default function Login() {
   const navigate = useNavigate();
