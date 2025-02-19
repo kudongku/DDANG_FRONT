@@ -7,8 +7,8 @@ export default function FindMyLocationButton() {
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation({
           address: '',
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude,
+          latitude: position.coords.longitude,
+          longitude: position.coords.latitude,
         });
       });
     } else {

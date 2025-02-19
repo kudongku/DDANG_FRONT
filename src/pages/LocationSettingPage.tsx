@@ -11,6 +11,12 @@ export default function LocationSetting() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (location.address === '') {
+      alert('위치를 선택해주세요!');
+      return;
+    }
+
     const { status } = await setLocationApi(location);
     if (status == 200) {
       navigator('/');
