@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Navbar from './Navbar';
+import Navbar from '../organism/Navbar';
 
 export default function MobileLayout({ children }: { children: ReactNode }) {
   return (

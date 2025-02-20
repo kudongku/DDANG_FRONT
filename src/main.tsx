@@ -2,7 +2,7 @@
 import { createRoot } from 'react-dom/client';
 import './styles/index.css';
 import App from './App.tsx';
-import MobileLayout from './layouts/MobileLayout.tsx';
+import MobileLayout from './components/layouts/MobileLayout.tsx';
 import { BrowserRouter } from 'react-router-dom';
 import AuthProvider from './providers/AuthProvider.tsx';
 import { Provider } from 'react-redux';

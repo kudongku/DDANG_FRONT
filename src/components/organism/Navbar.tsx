@@ -1,5 +1,5 @@
-import useAuth from '../hooks/useAuth';
-import NavTile from '../components/molecule/NavTile';
+import useAuth from '../../hooks/useAuth';
+import NavTile from '../molecule/NavTile';
 
 export default function Navbar() {
   const { isLoggedIn } = useAuth();
