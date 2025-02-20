@@ -71,7 +71,7 @@ export default function Signup() {
             placeholder="이메일을 입력하세요"
           />
           <button
-            className="ml-2 mt-2 text-sm text-gray-600 hover:underline"
+            className="ml-2 mt-2 text-sm text-gray-600 hover:underline disabled:opacity-50"
             onClick={handleClick}
             disabled={!validateButton}
           >
@@ -93,7 +93,11 @@ export default function Signup() {
 
         {error && <p className="text-red-500 text-sm">{error}</p>}
 
-        <button className="wideButton blue" onClick={handleSubmit} disabled={!emailValidation}>
+        <button
+          className="wideButton blue disabled:opacity-50"
+          onClick={handleSubmit}
+          disabled={!emailValidation}
+        >
           제출하기
         </button>
       </form>
