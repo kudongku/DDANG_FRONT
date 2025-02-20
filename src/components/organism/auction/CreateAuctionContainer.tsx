@@ -8,6 +8,7 @@ import {
 import CreateAuction from './CreateAuction';
 import { useNavigate } from 'react-router-dom';
 import useActions from '../../../hooks/useActions';
+import ErrorP from '../../molecule/ErrorP';
 
 /**
  * container component
@@ -56,7 +57,7 @@ export default function CreateAuctionContainer() {
           onSubmit={handleCreateAuction}
         />
       )}
-      {error && <div className="text-red-500">{error}</div>}
+      <ErrorP error={error} />
     </>
   );
 }

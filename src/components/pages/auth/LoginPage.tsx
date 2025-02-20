@@ -5,6 +5,7 @@ import { loginApi } from '../../../apis';
 import Header from '../../molecule/Header';
 import HrOrHr from '../../molecule/HrOrHr';
 import KakaoLoginImg from '../../molecule/KakaoLoginImg';
+import ErrorP from '../../molecule/ErrorP';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -73,7 +74,7 @@ export default function Login() {
           />
         </label>
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+        <ErrorP error={error} />
 
         <button onClick={handleSubmit} disabled={!emailValidation} className="wideButton blue">
           이메일로 로그인

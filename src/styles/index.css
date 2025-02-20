@@ -19,3 +19,7 @@
 .label {
   @apply text-gray-600 font-medium;
 }
+
+.inline-button {
+  @apply ml-2 mt-2 mb-4 text-sm text-gray-600 hover:underline disabled:opacity-50;
+}
