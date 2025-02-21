@@ -1,0 +1,11 @@
+import { ReactNode } from 'react';
+import Navbar from '../organism/Navbar';
+
+export default function MobileLayout({ children }: { children: ReactNode }) {
+  return (
+    <div className="antialiased max-w-[430px] mx-auto h-screen overflow-y-auto border border-gray-200">
+      <div className="p-8">{children}</div>
+      <Navbar />
+    </div>
+  );
+}

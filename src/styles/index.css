@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wideButton {
+  @apply w-full h-[50px] text-white font-bold rounded-lg transition disabled:bg-gray-400;
+}
+.wideButton.blue {
+  @apply bg-blue-500 hover:bg-blue-600;
+}
+.wideButton.red {
+  @apply bg-red-500 hover:bg-red-600;
+}
+
+.input {
+  @apply mt-1 w-full h-[50px] px-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+}
+
+.label {
+  @apply text-gray-600 font-medium;
+}
+
+.inline-button {
+  @apply ml-2 mt-2 mb-4 text-sm text-gray-600 hover:underline disabled:opacity-50;
+}

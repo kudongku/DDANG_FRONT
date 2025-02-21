@@ -1,0 +1,44 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
+import GrayBanner from '../molecule/GrayBanner';
+import Header from '../molecule/Header';
+import useAuth from '../../hooks/useAuth';
+import { AuthUserInfoResponse } from '../../types';
+import { getUserInfoApi } from '../../apis';
+
+export default function Profile() {
+  const { logout } = useAuth();
+  const [userInfo, setUserInfo] = useState<AuthUserInfoResponse>({
+    email: '',
+    address: '',
+  });
+
+  useEffect(() => {
+    getUserInfoApi()
+      .then((data) => {
+        setUserInfo(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  return (
+    <>
+      <Header title="프로필" />
+      <GrayBanner>
+        email : <span className="font-semibold">{userInfo.email}</span>
+        <br />
+        address : <span className="font-semibold">{userInfo.address}</span>
+      </GrayBanner>
+      <button
+        className="wideButton red"
+        onClick={() => {
+          logout();
+        }}
+      >
+        로그아웃
+      </button>
+    </>
+  );
+}

@@ -1,20 +1,12 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import KakaoLogin from "./pages/KakaoLogin";
+import { Routes, Route } from 'react-router-dom';
+import { routes } from './routes/routes';
 
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/auth/kakao" element={<KakaoLogin />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {routes.map((route) => (
+        <Route key={route.path} path={route.path} element={route.element} />
+      ))}
+    </Routes>
   );
 }
-
-export default App;
